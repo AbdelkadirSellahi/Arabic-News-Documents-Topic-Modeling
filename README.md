@@ -1,47 +1,48 @@
-# 🌐 Arabic News Documents Topic Modeling
+# Arabic News Documents Topic Modeling
 
-This project focuses on **automatically identifying key topics** in Arabic news documents using **Natural Language Processing (NLP)** and **machine learning**. It addresses challenges like Arabic morphology, dialect variations, and large-scale text analysis.
-
----
-
-## 🚀 Project Overview
-
-We utilize a **multi-class Arabic news dataset** containing 111,728 documents across 5 categories:
-- **Culture (13,738)**
-- **Diverse (16,728)**
-- **Economy (14,235)**
-- **Politics (20,505)**
-- **Sports (46,522)**
-
-Documents are labeled as:
-- `0`: Culture
-- `1`: Diverse
-- `2`: Economy
-- **`3`: Politics**
-- **`4`: Sports**
-
-The dataset is split into **80% training** and **20% testing** with class balance maintained.
+This project automatically identifies key topics in Arabic news articles using natural language processing and machine learning. It tackles common challenges such as Arabic morphology, dialectal variation, and scaling text analysis to large datasets.
 
 ---
 
-## 🔧 Key Features
+## Project Overview
 
-1. **Advanced Text Preprocessing:**
-   - Arabic punctuation removal
-   - Stopword filtering using NLTK's Arabic corpus
-   - Root extraction with ISRI Arabic Stemmer
+We use a labeled dataset of 111,728 Arabic news documents, grouped into five categories:
 
-2. **Feature Engineering:**
-   - TF-IDF vectorization with **5,000 maximum features**
-   - Stratified train-test splitting
+- **Culture**: 13,738 documents  
+- **Diverse**: 16,728 documents  
+- **Economy**: 14,235 documents  
+- **Politics**: 20,505 documents  
+- **Sports**: 46,522 documents  
 
-3. **Machine Learning Pipeline:**
-   - Logistic Regression classifier with `max_iter=1000`
-   - Model serialization using `pickle`
+Each category is assigned a numeric label:
+- `0`: Culture  
+- `1`: Diverse  
+- `2`: Economy  
+- `3`: Politics  
+- `4`: Sports  
 
-4. **Performance Metrics:**
-   - **Overall Accuracy:** 95.47%
-   - Detailed class-wise metrics:
+The dataset is split into 80% training and 20% testing, with stratification to preserve class distribution.
+
+---
+
+## Key Features
+
+### Text Preprocessing
+- Removal of Arabic-specific punctuation  
+- Stopword filtering using NLTK’s Arabic stopword list  
+- Root extraction via the ISRI Arabic Stemmer  
+
+### Feature Engineering
+- TF-IDF vectorization limited to the top 5,000 features  
+- Stratified train-test splitting to maintain class balance  
+
+### Machine Learning Pipeline
+- Logistic Regression classifier trained with `max_iter=1000`  
+- Model saved using Python’s `pickle` for reuse  
+
+### Performance Metrics
+- **Overall accuracy**: 95.47%  
+- Per-class breakdown:
 
 | Category   | Precision | Recall | F1-Score |
 |------------|-----------|--------|----------|
@@ -53,11 +54,11 @@ The dataset is split into **80% training** and **20% testing** with class balanc
 
 ---
 
-## 🖥️ How to Use
+## How to Use
 
-### 1. Clone Repository
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/AbdelkadirSellahi/arabic-news-topic-modeling.git
+git clone https://github.com/AbdelkadirSellahi/arabic-news-topic-modeling.git  
 cd arabic-news-topic-modeling
 ```
 
@@ -66,7 +67,7 @@ cd arabic-news-topic-modeling
 pip install -r requirements.txt
 ```
 
-### 3. Run Jupyter Notebook
+### 3. Run the Notebook
 ```bash
 jupyter notebook Topic_Modeling_based_on_Arabic_news_Documents.ipynb
 ```
@@ -82,65 +83,55 @@ print(f"Predicted Category: {predicted_category}")
 
 ---
 
-## 📊 Key Insights
+## Key Insights
 
-- Sports articles were easiest to classify (F1=0.99)
-- Economic/political content showed more classification complexity
-- Model handles dialectal variations effectively
-- Confusion matrix reveals most confusion between Economy/Politics categories
-
----
-
-## 📄 Technical Approach
-
-1. **Data Exploration:**
-   - Class distribution visualization
-   - Text length analysis
-   - Sample inspection per category
-
-2. **Preprocessing Pipeline:**
-   ```mermaid
-   graph LR
-   A[Raw Text] --> B[Punctuation Removal]
-   B --> C[Stopword Filtering]
-   C --> D[Arabic Stemming]
-   D --> E[TF-IDF Vectorization]
-   ```
-
-3. **Model Selection:**
-   - Logistic Regression outperformed alternatives in initial tests
-   - Handled class imbalance through stratified sampling
+- Sports articles were classified with the highest accuracy (F1-score: 0.99).  
+- Economy and politics showed more ambiguity, with lower but still strong performance.  
+- The model handles dialectal differences reasonably well.  
+- Most confusion occurs between Economy and Politics categories, as reflected in the confusion matrix.
 
 ---
 
-## 🤝 Contribution Guide
+## Technical Approach
 
-1. **Fork the Repository**
-2. **Create Feature Branch**
-3. **Test Your Changes**
-4. **Commit and Push**
-5. **Open Pull Request**
+### Data Exploration
+- Visualized class distributions  
+- Analyzed document length across categories  
+- Manually reviewed sample texts per class  
+
+### Preprocessing Pipeline
+```
+Raw Text → Punctuation Removal → Stopword Filtering → Arabic Stemming → TF-IDF Vectorization
+```
+
+### Model Selection
+- Logistic Regression was selected after initial testing against alternatives.  
+- Class imbalance was addressed through stratified sampling rather than resampling techniques.
 
 ---
 
-## 💬 **Contact**
+## Contribution Guide
 
-Feel free to open an issue or reach out for collaboration!  
+1. Fork the repository  
+2. Create a feature branch  
+3. Test your changes locally  
+4. Commit and push  
+5. Open a pull request  
 
-**Author**: *Abdelkadir Sellahi*
+---
 
-**Email**: *abdelkadirsellahi@gmail.com* 
+## Contact
 
+If you have questions, suggestions, or want to collaborate, feel free to open an issue or reach out directly.
+
+**Author**: Abdelkadir Sellahi  
+**Email**: abdelkadirsellahi@gmail.com  
 **GitHub**: [Abdelkadir Sellahi](https://github.com/AbdelkadirSellahi)
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Dataset: [Arabic News Dataset](https://data.mendeley.com/datasets/v524p5dhpj/2)
-- Core Libraries: NLTK, scikit-learn, pandas, matplotlib
-- Stemming: ISRI Arabic Stemmer
-
----
-
-💡 **Pro Tip:** Try the pretrained model with news from different Arabic dialects! For best results, ensure text contains at least 50 words.
+- Dataset: [Arabic News Dataset](https://data.mendeley.com/datasets/v524p5dhpj/2)  
+- Core libraries: NLTK, scikit-learn, pandas, matplotlib  
+- Stemming tool: ISRI Arabic Stemmer  
